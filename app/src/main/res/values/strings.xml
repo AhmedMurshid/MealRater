@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MealRater</string>
+    <string name="restaurant">Restaurant</string>
+    <string name="dish" >Dish</string>
+    <string name="button" >Rate Meal</string>
+    <string name="button2" >Save</string>
+    <string name="Rating" >Rating</string>
+    <string name="save" >Save</string>
+</resources>
