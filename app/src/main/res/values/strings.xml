@@ -4,6 +4,7 @@
     <string name="dish" >Dish</string>
     <string name="button" >Rate Meal</string>
     <string name="button2" >Save</string>
+    <string name="button3" >view</string>
     <string name="Rating" >Rating</string>
     <string name="save" >Save</string>
 </resources>

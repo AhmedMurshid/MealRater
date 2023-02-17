@@ -45,10 +45,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String name, String restraurant, String dish, String marks) {
+    public boolean insertData( String restraurant, String dish, Float marks) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2, name);
+        contentValues.put(COL_2, "name");
         contentValues.put(COL_3, restraurant);
         contentValues.put(COL_4, dish);
         contentValues.put(COL_5, marks);
@@ -60,13 +60,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.rawQuery("select * from "+TABLE_NAME,null);
     }
 
-    public boolean updateData(String id,String name,String restaurant,String dish,String marks) {
+    public boolean updateData(String id,String marks) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1,id);
-        contentValues.put(COL_2,name);
-        contentValues.put(COL_3,restaurant);
-        contentValues.put(COL_4,dish);
         contentValues.put(COL_5,marks);
         db.update(TABLE_NAME, contentValues, "ID = ?",new String[] { id });
         return true;
