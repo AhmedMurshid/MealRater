@@ -42,44 +42,32 @@
         android:id="@+id/textViewRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="308dp"
+        android:layout_marginBottom="52dp"
         android:text="@string/Rating"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/valueout"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@+id/ratebtn"
+        app:layout_constraintEnd_toEndOf="@+id/dish"
+        app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintStart_toStartOf="@+id/dish" />
 
     <TextView
         android:id="@+id/valueout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="92dp"
-        android:layout_marginBottom="308dp"
+        android:layout_marginBottom="52dp"
         android:text="@string/Rating"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/dish" />
+        app:layout_constraintBottom_toTopOf="@+id/ratebtn"
+        app:layout_constraintEnd_toEndOf="@+id/dish"
+        app:layout_constraintHorizontal_bias="0.648"
+        app:layout_constraintStart_toStartOf="@+id/dish" />
 
     <Button
         android:id="@+id/ratebtn"
         android:layout_width="133dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="196dp"
         android:text="@string/button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textViewRating"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewRating"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRating"
-        app:layout_constraintVertical_bias="0.224" />
+        app:layout_constraintEnd_toEndOf="@+id/valueout"
+        app:layout_constraintStart_toStartOf="@+id/textViewRating" />
 
-    <Button
-        android:id="@+id/viewit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="124dp"
-        android:text="@string/button3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ratebtn"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="@+id/ratebtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
