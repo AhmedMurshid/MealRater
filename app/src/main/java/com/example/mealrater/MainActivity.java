@@ -8,6 +8,7 @@ import androidx.arch.core.internal.SafeIterableMap;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,60 +26,46 @@ public class MainActivity extends AppCompatActivity {
     Button view1;
 
 
-    //
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //save = getResources().getIdentifier(savebtn , "Button", getPackageName());
         restaurant = findViewById(R.id.restaurant);
         dish = findViewById(R.id.dish);
         ratebtn = findViewById(R.id.ratebtn);
         value = findViewById(R.id.valueout);
-        view1 = findViewById(R.id.viewit);
-        //Cursor cursor = myDb.getAllData();
-//        if (cursor.moveToFirst()) {
-//            @SuppressLint("Range") String value1 = cursor.getString(cursor.getColumnIndex("marks"));
-//            value.setText(value1);
-//        }
-            ratebtn.setOnClickListener(v ->
-                    startActivity(new Intent(MainActivity.this,
-                            Activity2.class).putExtra("restaurant", String.valueOf(restaurant)
-                    ).putExtra("dish", String.valueOf(dish))));
+       // view1 = findViewById(R.id.viewit);
+
+        // Initialize DatabaseHelper class instance
+        myDb = new DatabaseHelper(this);
+        // Set the value of the TextView to the value of MARKS in the database
+        Cursor res = myDb.getAllData();
+        if(res.getCount() == 0) {
+            // handle the case when there is no data in the database
+            value.setText("No data");
+            return;
         }
-//    public void updateTextView(String toThis) {
-//        TextView textView = (TextView) findViewById(R.id.valueout);
-//        textView.setText(toThis);
-//    }
-    public void viewAll() {
-        view1.setOnClickListener(
-                v -> {
-                    Cursor res = myDb.getAllData();
-                    if(res.getCount() == 0) {
-                        // show message
-                        showMessage("Error","Nothing found");
-                        return;
-                    }
 
-                    StringBuilder buffer = new StringBuilder();
-                    while (res.moveToNext()) {
-                        buffer.append("Id :").append(res.getString(0)).append("\n");
-                        buffer.append("Name :").append(res.getString(1)).append("\n");
-                        buffer.append("RESTAURANT :").append(res.getString(2)).append("\n");
-                        buffer.append("DISH :").append(res.getString(3)).append("\n");
-                        buffer.append("Marks :").append(res.getString(4)).append("\n\n");
-                    }
+        StringBuffer buffer = new StringBuffer();
+        while(res.moveToNext()) {
+            // get the value of MARKS from the database using the column index
+            float marks = res.getFloat(3);
+            buffer.append("Marks : ").append(marks).append("\n");
+        }
+        value.setText(buffer.toString());
 
-                    // Show all data
-                    showMessage("Data",buffer.toString());
-                }
-        );
+        Intent myIntent = new Intent(MainActivity.this, Activity2.class);
+        if (ratebtn != null) {
+            ratebtn.setOnClickListener(v -> {
+                myIntent.putExtra("Restaurant", restaurant.getText().toString()); //Optional parameters
+                myIntent.putExtra("Dish", dish.getText().toString()); //Optional parameters
+                MainActivity.this.startActivity(myIntent);
+            });
+        } else {
+            Log.e("MainActivity", "ratebtn is null");
+        }
     }
-    public void showMessage(String title,String Message){
-        value.setText(Message);
-    }
-
-
 }
