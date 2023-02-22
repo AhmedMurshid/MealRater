@@ -25,7 +25,8 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".Activity2" />
+<!--        <activity android:name=".Activity2" />-->
+        <activity android:label="rating_page" android:name="Activity2"/>
     </application>
 
 </manifest>
