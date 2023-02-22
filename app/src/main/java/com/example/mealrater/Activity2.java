@@ -83,6 +83,7 @@ public class Activity2 extends AppCompatActivity {
 //    }
     public  void AddData() {
         Cursor res = myDb.getAllData();
+        Intent myIntent = new Intent(Activity2.this, MainActivity.class);
         savebtn.setOnClickListener(
                 v -> {
                     boolean isInserted = myDb.insertData(
@@ -96,6 +97,9 @@ public class Activity2 extends AppCompatActivity {
                     }
                     else
                         Toast.makeText(Activity2.this,"Data not Inserted",Toast.LENGTH_LONG).show();
+//                    myIntent.putExtra("Restaurant", restaurant.getText().toString()); //Optional parameters
+//                    myIntent.putExtra("Dish", dish.getText().toString()); //Optional parameters
+                    Activity2.this.startActivity(myIntent);
                 }
         );
     }
