@@ -38,9 +38,25 @@ public class MainActivity extends AppCompatActivity {
         ratebtn = findViewById(R.id.ratebtn);
         value = findViewById(R.id.valueout);
        // view1 = findViewById(R.id.viewit);
+        updateTextViewWithDatabaseData();
 
+
+        // Set up rate button intent
+        if (ratebtn != null) {
+            Intent myIntent = new Intent(MainActivity.this, Activity2.class);
+            ratebtn.setOnClickListener(v -> {
+                myIntent.putExtra("Restaurant", restaurant.getText().toString()); //Optional parameters
+                myIntent.putExtra("Dish", dish.getText().toString()); //Optional parameters
+                MainActivity.this.startActivity(myIntent);
+            });
+        } else {
+            Log.e("MainActivity", "Button clicked is null");
+        }
+    }
+    private void updateTextViewWithDatabaseData() {
         // Initialize DatabaseHelper class instance
-        myDb = new DatabaseHelper(this);
+        DatabaseHelper myDb = new DatabaseHelper(this);
+
         // Set the value of the TextView to the value of MARKS in the database
         Cursor res = myDb.getAllData();
         if(res.getCount() == 0) {
@@ -53,19 +69,9 @@ public class MainActivity extends AppCompatActivity {
         while(res.moveToNext()) {
             // get the value of MARKS from the database using the column index
             float marks = res.getFloat(3);
-            buffer.append("Marks : ").append(marks).append("\n");
+            buffer.append(": ").append(marks).append("\n");
         }
         value.setText(buffer.toString());
-
-        Intent myIntent = new Intent(MainActivity.this, Activity2.class);
-        if (ratebtn != null) {
-            ratebtn.setOnClickListener(v -> {
-                myIntent.putExtra("Restaurant", restaurant.getText().toString()); //Optional parameters
-                myIntent.putExtra("Dish", dish.getText().toString()); //Optional parameters
-                MainActivity.this.startActivity(myIntent);
-            });
-        } else {
-            Log.e("MainActivity", "ratebtn is null");
-        }
     }
+
 }
