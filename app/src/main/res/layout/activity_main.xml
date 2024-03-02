@@ -4,71 +4,119 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.example.RestaurantRater.MainActivity">
 
 
-    <EditText
-        android:id="@+id/restaurant"
-        android:layout_width="228dp"
-        android:layout_height="99dp"
-        android:layout_marginTop="148dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/restaurant"
-        app:layout_constraintBottom_toTopOf="@+id/dish"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dishoutput"
+        android:layout_width="398dp"
+        android:layout_height="103dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="343dp"
+        android:layout_height="536dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="LabelFor" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/dish"
-        android:layout_width="229dp"
-        android:layout_height="87dp"
-        android:layout_marginBottom="380dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/dish"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/restaurant"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/restaurant"
-        tools:ignore="LabelFor" />
+        <EditText
+            android:id="@+id/editText_restaurant_id"
+            android:layout_width="341dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="40dp"
+            android:autofillHints="here"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/restaurant_id"
+            tools:ignore="LabelFor" />
 
-    <TextView
-        android:id="@+id/textViewRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
-        android:text="@string/Rating"
-        app:layout_constraintBottom_toTopOf="@+id/ratebtn"
-        app:layout_constraintEnd_toEndOf="@+id/dish"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/dish" />
+        <EditText
+            android:id="@+id/editText_Address"
+            android:layout_width="341dp"
+            android:layout_height="80dp"
+            android:autofillHints="here"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/street_address"
+            tools:ignore="LabelFor" />
 
-    <TextView
-        android:id="@+id/valueout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
-        android:text="@string/Rating"
-        app:layout_constraintBottom_toTopOf="@+id/ratebtn"
-        app:layout_constraintEnd_toEndOf="@+id/dish"
-        app:layout_constraintHorizontal_bias="0.532"
-        app:layout_constraintStart_toStartOf="@+id/dish" />
+        <EditText
+            android:id="@+id/editText_restaurant_name"
+            android:layout_width="341dp"
+            android:layout_height="80dp"
+            android:autofillHints="here"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/name"
+            tools:ignore="LabelFor" />
 
-    <Button
-        android:id="@+id/ratebtn"
-        android:layout_width="133dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="204dp"
-        android:text="@string/button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/valueout"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewRating" />
+        <EditText
+            android:id="@+id/editText_ZipCode"
+            android:layout_width="341dp"
+            android:layout_height="80dp"
+            android:autofillHints="here"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/zip_code"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/editText_State"
+            android:layout_width="341dp"
+            android:layout_height="80dp"
+            android:autofillHints="here"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/state"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/editText_City"
+            android:layout_width="341dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="1188dp"
+            android:autofillHints="here"
+            android:ems="20"
+            android:inputType="textPersonName"
+            android:text="@string/city"
+            tools:ignore="LabelFor" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="210dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <Button
+            android:id="@+id/button_show_dish"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:autofillHints="here"
+            android:text="@string/rate_dish"
+            tools:ignore="LabelFor,TextFields" />
+
+        <Button
+            android:id="@+id/button_add_restaurant"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:autofillHints="here"
+            android:text="@string/add_data"
+            tools:ignore="LabelFor,TextFields" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
